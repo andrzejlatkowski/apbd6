@@ -15,12 +15,12 @@ public class Prescription_MedicamentEfConfiguration: IEntityTypeConfiguration<Pr
         
         builder.HasOne(pm => pm.IdMedicamentNavigation)
             .WithMany(m => m.PrescriptionMedicaments)
-            .HasForeignKey(pm => pm.IdPrescription)
+            .HasForeignKey(pm => pm.IdMedicament)
             .OnDelete(DeleteBehavior.Cascade);
         
         builder.HasOne(pm => pm.IdPrescriptionNavigation)
             .WithMany(pr => pr.PrescriptionMedicaments)
-            .HasForeignKey(pm => pm.IdMedicament)
+            .HasForeignKey(pm => pm.IdPrescription)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

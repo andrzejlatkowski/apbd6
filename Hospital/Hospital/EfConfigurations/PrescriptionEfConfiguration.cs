@@ -13,11 +13,10 @@ public class PrescriptionEfConfiguration: IEntityTypeConfiguration<Prescription>
 
         builder.Property(pr => pr.Date).IsRequired(true);
         builder.Property(pr => pr.DueDate).IsRequired(true);
-        builder.Property(pr => pr.DueDate).IsRequired(true);
 
         builder.HasOne(pr => pr.IdPatientNavigation)
             .WithMany(p => p.Prescriptions)
-            .HasForeignKey(pr => pr.IdPrescription)
+            .HasForeignKey(pr => pr.IdPatient)
             .OnDelete(DeleteBehavior.Cascade);
         
         builder.HasOne(pr => pr.IdDoctorNavigation)
